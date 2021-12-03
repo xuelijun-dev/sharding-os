@@ -1,4 +1,4 @@
-package com.greenbon.base.controller;
+package com.greenbon.base.webservice;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.IService;

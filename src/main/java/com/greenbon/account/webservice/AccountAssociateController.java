@@ -4,7 +4,7 @@ package com.greenbon.account.webservice;
 import com.greenbon.account.domain.AccountAssociate;
 import com.greenbon.account.service.AccountAssociateService;
 import com.greenbon.base.comm.IdsRequest;
-import com.greenbon.base.controller.CommonController;
+import com.greenbon.base.webservice.CommonController;
 import com.greenbon.base.page.PageDTO;
 import com.greenbon.base.statuscode.ResponseCode;
 import org.springframework.web.bind.annotation.*;

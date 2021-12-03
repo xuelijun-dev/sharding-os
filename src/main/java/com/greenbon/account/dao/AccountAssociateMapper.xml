@@ -53,4 +53,11 @@
         select * from a_account_associate where   avatar_hash IS NULl or avatar_hash =''
         LIMIT 0,${size}
     </select>
+
+    <select id="findById" resultType="com.greenbon.account.domain.AccountAssociate">
+        SELECT *
+        FROM a_account_associate
+        where
+        id = #{id}
+    </select>
 </mapper>

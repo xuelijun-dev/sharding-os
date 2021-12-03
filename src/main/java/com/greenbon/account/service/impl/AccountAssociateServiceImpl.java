@@ -1,7 +1,6 @@
 package com.greenbon.account.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.greenbon.account.dao.AccountAssociateDao;
 import com.greenbon.account.domain.AccountAssociate;
 import com.greenbon.account.service.AccountAssociateService;
@@ -19,7 +18,6 @@ import java.util.List;
  * @since 2020-09-11
  */
 @Service
-//@Transactional(rollbackFor = Exception.class)
 public class AccountAssociateServiceImpl extends CommonServiceImpl<AccountAssociateDao, AccountAssociate> implements AccountAssociateService {
 
     @Override
@@ -42,6 +40,6 @@ public class AccountAssociateServiceImpl extends CommonServiceImpl<AccountAssoci
 
     @Override
     public AccountAssociate findById(Long id) {
-        return this.getById(id);
+        return dao.findById(id);
     }
 }

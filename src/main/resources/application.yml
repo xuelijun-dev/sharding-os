@@ -1,3 +1,26 @@
+# 开发环境配置
+server:
+  servlet:
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    basedir: ./tmp
+    # 最大等待数
+    accept-count: 1000
+    # 最大可被连接数
+    max-connections: 10000
+    # 最大工作线程数
+    max-threads: 800
+    # 最小工作线程数
+    min-spare-threads: 100
+
+logging:
+  level:
+    com.greenbon: debug
+  config: classpath:logback.xml
+
 #spring系列配置
 spring:
   # 文件上传
@@ -63,40 +86,12 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   main:
     allow-bean-definition-overriding: true
-
-
-# 开发环境配置
-server:
-  servlet:
-    context-path: /
-  tomcat:
-    # tomcat的URI编码
-    uri-encoding: UTF-8
-    # tomcat最大线程数，默认为200
-    basedir: ./tmp
-    # 最大等待数
-    accept-count: 1000
-    # 最大可被连接数
-    max-connections: 10000
-    # 最大工作线程数
-    max-threads: 800
-    # 最小工作线程数
-    min-spare-threads: 100
-
-logging:
-  level:
-    com.greenbon: debug
-  config: classpath:logback.xml
-##日志定向配置
-#logging:
-#  config: classpath:logback-spring.xml
-
 # mybatis-plus配置
 mybatis-plus:
   global-config:
     banner: false
-  mapper-locations: classpath:com/greenbon/*/dao/*.xml
-  typeAliasesPackage: com.greenbon.*.domain
+  mapper-locations: classpath:com/greenbon/*/dao/*.xml,classpath:com/open/*/dao/*.xml
+  typeAliasesPackage: com.greenbon.*.domain,com.open.*.domain
   configuration:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
     map-underscore-to-camel-case: true
@@ -104,3 +99,4 @@ mybatis-plus:
     call-setters-on-nulls: true
     db-column-underline: true
     capital-mode: true
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl

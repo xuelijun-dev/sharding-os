@@ -11,11 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 服务层基础类，具体业务服务类继承它
- *
- * @author PanJinFa
- */
 @Slf4j
 @Transactional(rollbackFor = Exception.class)
 public class CommonServiceImpl<M extends CommonDao<T>, T> extends ServiceImpl<M, T> {

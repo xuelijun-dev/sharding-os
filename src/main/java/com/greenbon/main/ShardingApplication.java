@@ -2,6 +2,7 @@ package com.greenbon.main;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shardingsphere.infra.config.datasource.DataSourceConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
