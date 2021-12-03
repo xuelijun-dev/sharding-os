@@ -1,0 +1,106 @@
+#spring系列配置
+spring:
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 1000MB
+      # 设置总上传的文件大小
+      max-request-size: 1000MB
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.110:33067/gb_manage_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
+    username: root
+    password: 123456
+    druid:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.3.110:33067/gb_manage_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
+      username: root
+      password: 123456
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 70
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      statViewServlet:
+        enabled: true
+#        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /monitor/druid/*
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  main:
+    allow-bean-definition-overriding: true
+
+
+# 开发环境配置
+server:
+  servlet:
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    basedir: ./tmp
+    # 最大等待数
+    accept-count: 1000
+    # 最大可被连接数
+    max-connections: 10000
+    # 最大工作线程数
+    max-threads: 800
+    # 最小工作线程数
+    min-spare-threads: 100
+
+logging:
+  level:
+    com.greenbon: debug
+  config: classpath:logback.xml
+##日志定向配置
+#logging:
+#  config: classpath:logback-spring.xml
+
+# mybatis-plus配置
+mybatis-plus:
+  global-config:
+    banner: false
+  mapper-locations: classpath:com/greenbon/*/dao/*.xml
+  typeAliasesPackage: com.greenbon.*.domain
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    db-column-underline: true
+    capital-mode: true
