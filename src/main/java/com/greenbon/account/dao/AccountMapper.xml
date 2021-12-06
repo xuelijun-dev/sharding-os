@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenbon.account.dao.AccountDao">
+    <sql id="baseSql">
+        SELECT * from  a_account
+        <where>
+            <if test="filter.startTime!=null and filter.startTime!='' and filter.endTime!=null and filter.endTime!=''">
+                and create_time between #{filter.startTime} and #{filter.endTime}
+            </if>
+            <if test="filter.province!=null and filter.province!=''">
+                and province = #{filter.province}
+            </if>
+            <if test="filter.city!=null and filter.city!=''">
+                and city = #{filter.city}
+            </if>
+            <if test="filter.district!=null and filter.district!=''">
+                and district = #{filter.district}
+            </if>
+            <if test="filter.mobile!=null and filter.mobile!=''">
+                and mobile = #{filter.mobile}
+            </if>
+            <if test="filter.nickname!=null and filter.nickname!=''">
+                and nickname = #{filter.nickname}
+            </if>
+        </where>
+    </sql>
+    <select id="queryPage" resultType="com.greenbon.base.comm.ResultMap">
+        <include refid="baseSql"/>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="queryList" resultType="com.greenbon.base.comm.ResultMap">
+        <include refid="baseSql"/>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="findById" resultType="com.greenbon.account.domain.Account">
+        SELECT *
+        FROM a_account_associate
+        where
+        id = #{id}
+    </select>
+</mapper>

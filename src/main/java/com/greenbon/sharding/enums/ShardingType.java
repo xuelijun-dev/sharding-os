@@ -18,11 +18,12 @@
 package com.greenbon.sharding.enums;
 
 public enum ShardingType {
-    
-    SHARDING_DATABASES,
-    
     SHARDING_TABLES,
-    
+
+    MOD_SHARDING_TABLES,
+
+    SHARDING_DATABASES,
+
     SHARDING_DATABASES_AND_TABLES,
     
     SHARDING_SHADOW_DATABASES,
