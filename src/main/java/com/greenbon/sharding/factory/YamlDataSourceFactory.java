@@ -29,18 +29,14 @@ public final class YamlDataSourceFactory {
     
     public static DataSource newInstance(final ShardingType shardingType) throws SQLException, IOException {
         switch (shardingType) {
-            case SHARDING_DATABASES:
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases.yaml"));
-            case SHARDING_TABLES:
-//                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables.yaml"));
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-range.yaml"));
             case MOD_SHARDING_TABLES:
-//                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables.yaml"));
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables.yaml"));
-            case SHARDING_DATABASES_AND_TABLES:
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases-tables.yaml"));
-            case SHARDING_AUTO_TABLES:
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-auto-tables.yaml"));
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-mod.yaml"));
+            case MONTH_SHARDING_TABLES:
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-month.yaml"));
+            case QUARTER_SHARDING_TABLES:
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-quarter.yaml"));
+            case YEAR_SHARDING_TABLES:
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-year.yaml"));
             default:
                 throw new UnsupportedOperationException(shardingType.name());
         }

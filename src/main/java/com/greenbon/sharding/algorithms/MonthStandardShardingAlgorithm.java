@@ -16,7 +16,7 @@ import java.util.TreeSet;
 
 @Slf4j
 @Component
-public class DateStandardShardingAlgorithm implements StandardShardingAlgorithm<Date> {
+public class MonthStandardShardingAlgorithm implements StandardShardingAlgorithm<Date> {
     @Override
     public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Date> preciseShardingValue) {
         log.info("############### (sharding-jdbc分表) PreciseShardingAlgorithm     collection:{} ###############", JSONUtils.toJSONString(availableTargetNames));
@@ -38,7 +38,7 @@ public class DateStandardShardingAlgorithm implements StandardShardingAlgorithm<
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<Date> rangeShardingValue) {
         log.info("############### (sharding-jdbc分表) RangeShardingAlgorithm     collection:{} ###############", JSONUtils.toJSONString(availableTargetNames));
-        log.info("############### (sharding-jdbc分表) RangeShardingAlgorithm     rangeShardingValue:{} ###############", JSONUtils.toJSONString(rangeShardingValue));
+        log.info("############### (sharding-jdbc分表) RangeShardingAlgorithm     rangeShardingValue:{} ###############", rangeShardingValue);
         Set<String> tableNames = new TreeSet<>();
         Range<Date> createTimeRange = rangeShardingValue.getValueRange();
         Date lowerDate = ShardingUtil.transferShardingValue(createTimeRange.lowerEndpoint());
@@ -52,7 +52,7 @@ public class DateStandardShardingAlgorithm implements StandardShardingAlgorithm<
             }
         }
         log.info("############### (sharding-jdbc分表) RangeShardingAlgorithm 最终匹配表名:{} ###############", JSONUtils.toJSONString(tableNames));
-        return null;
+        return tableNames;
     }
 
     @Override
@@ -62,6 +62,6 @@ public class DateStandardShardingAlgorithm implements StandardShardingAlgorithm<
 
     @Override
     public String getType() {
-        return "dateShardingAlgorithm";
+        return "monthShardingAlgorithm";
     }
 }

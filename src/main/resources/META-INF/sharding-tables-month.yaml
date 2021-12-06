@@ -54,14 +54,14 @@ rules:
     a_account_associate:
       # actualDataNodes: ds.a_account_associate_${2020..2011}_0${1..9}
       # actualDataNodes: ds.a_account_associate_${2020..2011}0${1..9},ds.a_account_associate_${2020..2021}${10..12}
-      actualDataNodes: ds.a_account_associate_20210${1..9}
+      actualDataNodes: ds1.a_account_associate_20210${1..9},ds1.a_account_associate_2021${10..12}
       tableStrategy:
         standard:
           shardingColumn: create_time
           shardingAlgorithmName: a_account_associate_inline
   shardingAlgorithms:
     a_account_associate_inline:
-      type: dateShardingAlgorithm
+      type: monthShardingAlgorithm
 #      props:
 #        datetime-pattern: 'yyyy-MM-dd HH:mm:ss'
 #        datetime-lower: '2020-01-01 00:00:00'

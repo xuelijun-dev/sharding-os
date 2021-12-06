@@ -21,7 +21,8 @@ public class ShardingUtil {
      * @return 年月字符串
      */
     public static String getYearMonthTableSuffixByDate(Date date) {
-        return DateUtils.getDate(date,"yyyy_MM");
+//        return DateUtils.getDate(date,"yyyy_MM");
+        return DateUtils.getDate(date,"yyyyMM");
     }
 
     /**
@@ -40,13 +41,19 @@ public class ShardingUtil {
         } else {
             //时间上下界限不相同,计算间隔的所有表
             String tempSuffix = lowerTableSuffix;
+            suffixList.add(tempSuffix);
             while (!tempSuffix.equals(upperTableSuffix)) {
-                suffixList.add(tempSuffix);
-                String[] yearMonthArr = tempSuffix.split("_");
-                Date tempDate = DateUtils.getDate(yearMonthArr[0] + (yearMonthArr[1].length() == 1 ? "0" + yearMonthArr[1] : yearMonthArr[1]), "yyyyMM");
+                String year = tempSuffix.substring(0, 4);
+                String month = tempSuffix.substring(4, tempSuffix.length());
+                Date tempDate = DateUtils.getDate(year + (month.length() == 1 ? "0" + month : month), "yyyyMM");
                 Date realDate = DateUtils.goMonth(tempDate, 1);
                 tempSuffix = getYearMonthTableSuffixByDate(realDate);
                 suffixList.add(tempSuffix);
+//                String[] yearMonthArr = tempSuffix.split("_");
+//                Date tempDate = DateUtils.getDate(yearMonthArr[0] + (yearMonthArr[1].length() == 1 ? "0" + yearMonthArr[1] : yearMonthArr[1]), "yyyyMM");
+//                Date realDate = DateUtils.goMonth(tempDate, 1);
+//                tempSuffix = getYearMonthTableSuffixByDate(realDate);
+//                suffixList.add(tempSuffix);
             }
         }
         return suffixList;
@@ -85,6 +92,14 @@ public class ShardingUtil {
             date = (Date) ShardingValue;
         }
         return date;
+    }
+
+    public static void main(String[] args) {
+        String s = "202101";
+        String year = s.substring(0, 4);
+        String month = s.substring(4,s.length());
+        System.out.println(year);
+        System.out.println(month);
     }
 
 

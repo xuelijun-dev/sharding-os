@@ -18,9 +18,27 @@
 package com.greenbon.sharding.enums;
 
 public enum ShardingType {
-    SHARDING_TABLES,
-
+    /**
+     * 取模分片
+     */
     MOD_SHARDING_TABLES,
+
+    /**
+     * 月份分片(表尾缀必须:yyyyMM,如:t_table_yyyyMM)
+     */
+    MONTH_SHARDING_TABLES,
+
+    /**
+     * 季度分片(表尾缀必须:yyyyMM,如:t_table_yyyyMM)
+     */
+    QUARTER_SHARDING_TABLES,
+
+    /**
+     * 年度分片(表尾缀必须:yyyy,如:t_table_yyyy)
+     */
+    YEAR_SHARDING_TABLES,
+
+    SHARDING_TABLES,
 
     SHARDING_DATABASES,
 
