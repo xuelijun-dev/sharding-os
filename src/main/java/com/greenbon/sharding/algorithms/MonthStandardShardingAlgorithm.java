@@ -20,7 +20,7 @@ public class MonthStandardShardingAlgorithm implements StandardShardingAlgorithm
     @Override
     public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Date> preciseShardingValue) {
         log.info("############### (sharding-jdbc分表) PreciseShardingAlgorithm     collection:{} ###############", JSONUtils.toJSONString(availableTargetNames));
-        log.info("############### (sharding-jdbc分表) PreciseShardingAlgorithm     preciseShardingValue:{} ###############", JSONUtils.toJSONString(preciseShardingValue));
+        log.info("############### (sharding-jdbc分表) PreciseShardingAlgorithm     preciseShardingValue:{} ###############", preciseShardingValue);
         Date createTime = ShardingUtil.transferShardingValue(preciseShardingValue.getValue());
         //表名尾缀 如：YYYY_M
         String yearMonthTableSuffix = ShardingUtil.getYearMonthTableSuffixByDate(createTime);

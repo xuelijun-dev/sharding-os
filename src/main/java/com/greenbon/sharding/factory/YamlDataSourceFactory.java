@@ -33,10 +33,10 @@ public final class YamlDataSourceFactory {
                 return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-mod.yaml"));
             case MONTH_SHARDING_TABLES:
                 return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-month.yaml"));
-            case QUARTER_SHARDING_TABLES:
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-quarter.yaml"));
-            case YEAR_SHARDING_TABLES:
-                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-year.yaml"));
+            case MONTH_SHARDING_TABLES_RAW:
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-month-raw.yaml"));
+            case QUARTER_SHARDING_TABLES_RAW:
+                return YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables-quarter-raw.yaml"));
             default:
                 throw new UnsupportedOperationException(shardingType.name());
         }

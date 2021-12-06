@@ -36,6 +36,11 @@ public class AccountAssociateController extends CommonController<AccountAssociat
         return ResponseCode.getSuccess(service.findById(id));
     }
 
+    @GetMapping("findByAccountId")
+    public Object findByAccountId(Long accountId) {
+        return ResponseCode.getSuccess(service.findByAccountId(accountId));
+    }
+
     @PostMapping("queryPage")
     public Object queryPage(@RequestBody PageDTO dto) {
         return ResponseCode.getSuccess(service.queryPage(dto));

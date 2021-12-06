@@ -3,7 +3,7 @@ dataSources:
     dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
     # type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.3.110:33067/gb_manage_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
+    url: jdbc:mysql://192.168.3.110:33067/gb_wechart_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
     username: root
     password: 123456
     # 初始连接数
@@ -52,23 +52,21 @@ rules:
 - !SHARDING
   tables:
     a_account_associate:
-      # actualDataNodes: ds.a_account_associate_${2020..2011}_0${1..9}
-      # actualDataNodes: ds.a_account_associate_${2020..2011}0${1..9},ds.a_account_associate_${2020..2021}${10..12}
-      actualDataNodes: ds1.a_account_associate_20210${1..9},ds1.a_account_associate_2021${10..12}
+      actualDataNodes: ds1.a_account_associate_20210${1..4}
       tableStrategy:
         standard:
           shardingColumn: create_time
           shardingAlgorithmName: a_account_associate_inline
   shardingAlgorithms:
     a_account_associate_inline:
-      type: monthShardingAlgorithm
-#      props:
-#        datetime-pattern: 'yyyy-MM-dd HH:mm:ss'
-#        datetime-lower: '2020-01-01 00:00:00'
-#        datetime-upper: '2021-12-31 23:59:59'
-#        sharding-suffix-pattern: 'yyyyMM'
-#        datetime-interval-amount: 1
-#        datetime-interval-unit: 'months'
+      type: INTERVAL
+      props:
+        datetime-pattern: 'yyyy-MM-dd HH:mm:ss'
+        datetime-lower: '2021-01-01 00:00:00'
+        datetime-upper: '2021-12-31 23:59:59'
+        sharding-suffix-pattern: 'yyyyMM'
+        datetime-interval-amount: '1'
+        datetime-interval-unit: 'months'
 
 props:
   sql-show: true

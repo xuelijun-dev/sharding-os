@@ -40,4 +40,7 @@ public interface AccountAssociateDao extends CommonDao<AccountAssociate> {
 
     AccountAssociate findById(@Param("id") Long id);
 
+
+    List<AccountAssociate> findByAccountId(@Param("accountId") Long accountId);
+
 }

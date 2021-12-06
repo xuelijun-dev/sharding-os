@@ -9,14 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author caolei
- * @since 2020-09-11
- */
+
 @Service
 public class AccountAssociateServiceImpl extends CommonServiceImpl<AccountAssociateDao, AccountAssociate> implements AccountAssociateService {
 
@@ -41,5 +34,10 @@ public class AccountAssociateServiceImpl extends CommonServiceImpl<AccountAssoci
     @Override
     public AccountAssociate findById(Long id) {
         return dao.findById(id);
+    }
+
+    @Override
+    public List<AccountAssociate> findByAccountId(Long accountId) {
+        return dao.findByAccountId(accountId);
     }
 }

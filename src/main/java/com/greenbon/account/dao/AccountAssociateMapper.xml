@@ -60,4 +60,11 @@
         where
         id = #{id}
     </select>
+
+    <select id="findByAccountId" resultType="com.greenbon.account.domain.AccountAssociate">
+        SELECT *
+        FROM a_account_associate
+        where
+            account_id = #{accountId}
+    </select>
 </mapper>
