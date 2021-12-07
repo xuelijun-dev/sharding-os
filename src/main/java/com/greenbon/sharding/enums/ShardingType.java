@@ -37,39 +37,4 @@ public enum ShardingType {
      * 内嵌算法季度分片(表尾缀必须:yyyyMM,如:t_table_yyyyMM)
      */
     QUARTER_SHARDING_TABLES_RAW,
-
-    /**
-     * 年度分片(表尾缀必须:yyyy,如:t_table_yyyy)
-     */
-    YEAR_SHARDING_TABLES,
-
-    SHARDING_TABLES,
-
-    SHARDING_DATABASES,
-
-    SHARDING_DATABASES_AND_TABLES,
-    
-    SHARDING_SHADOW_DATABASES,
-    
-    ENCRYPT_SHADOW,
-
-    READWRITE_SPLITTING,
-
-    READWRITE_SPLITTING_SHADOW,
-    
-    SHARDING_READWRITE_SPLITTING,
-    
-    ENCRYPT,
-    
-    SHADOW,
-    
-    SHADOW_DEFAULT_ALGORITHM,
-    
-    SHARDING_AUTO_TABLES,
-
-    SHARDING_HINT_DATABASES_ONLY,
-
-    SHARDING_HINT_DATABASES_TABLES,
-
-    READWRITE_SPLITTING_HINT
 }

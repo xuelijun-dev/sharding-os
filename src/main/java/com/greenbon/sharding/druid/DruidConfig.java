@@ -15,7 +15,7 @@ public class DruidConfig {
     public DataSource dataSource() {
         DataSource datasource = null;
         try {
-            datasource = YamlDataSourceFactory.newInstance(ShardingType.MONTH_SHARDING_TABLES_RAW);
+            datasource = YamlDataSourceFactory.newInstance(ShardingType.QUARTER_SHARDING_TABLES_RAW);
         } catch (Exception e) {
             e.printStackTrace();
         }

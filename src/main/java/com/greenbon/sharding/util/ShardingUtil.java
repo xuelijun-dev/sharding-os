@@ -21,7 +21,6 @@ public class ShardingUtil {
      * @return 年月字符串
      */
     public static String getYearMonthTableSuffixByDate(Date date) {
-//        return DateUtils.getDate(date,"yyyy_MM");
         return DateUtils.getDate(date,"yyyyMM");
     }
 
@@ -49,11 +48,6 @@ public class ShardingUtil {
                 Date realDate = DateUtils.goMonth(tempDate, 1);
                 tempSuffix = getYearMonthTableSuffixByDate(realDate);
                 suffixList.add(tempSuffix);
-//                String[] yearMonthArr = tempSuffix.split("_");
-//                Date tempDate = DateUtils.getDate(yearMonthArr[0] + (yearMonthArr[1].length() == 1 ? "0" + yearMonthArr[1] : yearMonthArr[1]), "yyyyMM");
-//                Date realDate = DateUtils.goMonth(tempDate, 1);
-//                tempSuffix = getYearMonthTableSuffixByDate(realDate);
-//                suffixList.add(tempSuffix);
             }
         }
         return suffixList;
