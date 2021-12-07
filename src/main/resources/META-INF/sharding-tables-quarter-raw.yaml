@@ -64,8 +64,8 @@ rules:
         datetime-pattern: 'yyyy-MM-dd HH:mm:ss'
         datetime-lower: '2021-01-01 00:00:00'
         datetime-upper: '2021-12-31 23:59:59'
-        sharding-suffix-pattern: 'yyyyMM'
-        datetime-interval-amount: '1'
+        sharding-suffix-pattern: 'yyyyQQ'
+        datetime-interval-amount: '3'
         datetime-interval-unit: 'months'
 
 props:

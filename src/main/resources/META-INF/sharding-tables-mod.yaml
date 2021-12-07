@@ -62,8 +62,6 @@ dataSources:
         config:
           multi-statement-allow: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    main:
-      allow-bean-definition-overriding: true
 rules:
   - !SHARDING
     tables:

@@ -1,4 +1,4 @@
-# 自定义按月分表算法
-com.greenbon.sharding.algorithms.MonthStandardShardingAlgorithm
-# 默认数据库算法
-# com.greenbon.sharding.algorithms.DataBaseDefaultAlgorithm
+## 自定义按月分表算法
+#com.greenbon.sharding.algorithms.MonthStandardShardingAlgorithm
+## 默认数据库算法
+#com.greenbon.sharding.algorithms.DataBaseDefaultAlgorithm

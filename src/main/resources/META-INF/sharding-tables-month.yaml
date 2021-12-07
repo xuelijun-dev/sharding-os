@@ -45,8 +45,6 @@ dataSources:
         config:
           multi-statement-allow: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    main:
-      allow-bean-definition-overriding: true
   ds2:
     dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -93,36 +91,24 @@ dataSources:
         config:
           multi-statement-allow: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    main:
-      allow-bean-definition-overriding: true
-
 rules:
 - !SHARDING
   tables:
     a_account_associate:
-      # actualDataNodes: ds.a_account_associate_${2020..2011}_0${1..9}
-      # actualDataNodes: ds.a_account_associate_${2020..2011}0${1..9},ds.a_account_associate_${2020..2021}${10..12}
-      actualDataNodes: ds1.a_account_associate_20210${1..9},ds1.a_account_associate_2021${10..12}
+      actualDataNodes: ds2.a_account_associate_20210${1..9},ds2.a_account_associate_2021${10..12}
       tableStrategy:
         standard:
           shardingColumn: create_time
           shardingAlgorithmName: a_account_associate_inline
-  defaultDatabaseStrategy: # Default strategy for database sharding
-    standard:
-      shardingAlgorithmName: dataBaseDefaultAlgorithm
-  defaultTableStrategy: # Default strategy for table sharding
-    none:
-
   shardingAlgorithms:
     a_account_associate_inline:
       type: monthShardingAlgorithm
-#      props:
-#        datetime-pattern: 'yyyy-MM-dd HH:mm:ss'
-#        datetime-lower: '2020-01-01 00:00:00'
-#        datetime-upper: '2021-12-31 23:59:59'
-#        sharding-suffix-pattern: 'yyyyMM'
-#        datetime-interval-amount: 1
-#        datetime-interval-unit: 'months'
+  defaultDatabaseStrategy:
+    none:
+#    standard:
+#      shardingAlgorithmName: dataBaseDefaultAlgorithm
+  defaultTableStrategy:
+    none:
 
 props:
   sql-show: true
