@@ -1,4 +1,4 @@
-package com.greenbon.druid.config;
+package com.greenbon.sharding.druid;
 
 import com.greenbon.sharding.enums.ShardingType;
 import com.greenbon.sharding.factory.YamlDataSourceFactory;
@@ -16,7 +16,6 @@ public class DruidConfig {
         DataSource datasource = null;
         try {
             datasource = YamlDataSourceFactory.newInstance(ShardingType.MONTH_SHARDING_TABLES_RAW);
-//            datasource = YamlDataSourceFactory.newInstance(ShardingType.MOD_SHARDING_TABLES);
         } catch (Exception e) {
             e.printStackTrace();
         }

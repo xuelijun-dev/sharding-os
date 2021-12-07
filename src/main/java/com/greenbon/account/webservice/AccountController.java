@@ -36,6 +36,12 @@ public class AccountController extends CommonController<AccountService> {
         return ResponseCode.getSuccess(service.findById(id));
     }
 
+
+    @GetMapping("getById")
+    public Object getById(Long id) {
+        return ResponseCode.getSuccess(service.getById(id));
+    }
+
     @PostMapping("queryPage")
     public Object queryPage(@RequestBody PageDTO dto) {
         return ResponseCode.getSuccess(service.queryPage(dto));

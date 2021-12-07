@@ -36,8 +36,7 @@
 
     <select id="findById" resultType="com.greenbon.account.domain.Account">
         SELECT *
-        FROM a_account_associate
-        where
-        id = #{id}
+        FROM a_account
+        where id = #{id}
     </select>
 </mapper>

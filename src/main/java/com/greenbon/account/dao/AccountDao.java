@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface AccountDao extends CommonDao<Account> {
+
     Account findById(@Param("id") Long id);
 
 }

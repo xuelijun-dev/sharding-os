@@ -2,7 +2,6 @@ dataSources:
   ds0:
     dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    # type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://192.168.3.110:33067/gb_manage_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
     username: root
     password: 123456
@@ -45,10 +44,9 @@ dataSources:
         config:
           multi-statement-allow: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-  ds1:
+  ds2:
     dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    # type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://192.168.3.110:33067/gb_manage_os?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true&useOldAliasMetadataBehavior=true
     username: root
     password: 123456
@@ -91,8 +89,6 @@ dataSources:
         config:
           multi-statement-allow: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-
 rules:
 - !SHARDING
   tables:
@@ -102,14 +98,6 @@ rules:
         standard:
           shardingColumn: create_time
           shardingAlgorithmName: a_account_associate_inline
-
-  defaultDatabaseStrategy:
-    none:
-    #    standard:
-    #      shardingAlgorithmName: dataBaseDefaultAlgorithm
-  defaultTableStrategy:
-    none:
-
   shardingAlgorithms:
     a_account_associate_inline:
       type: INTERVAL
@@ -118,7 +106,7 @@ rules:
         datetime-lower: '2021-01-01 00:00:00'
         datetime-upper: '2021-12-31 23:59:59'
         sharding-suffix-pattern: 'yyyyMM'
-        datetime-interval-amount: '1'
+        datetime-interval-amount: 1
         datetime-interval-unit: 'months'
 
 props:
