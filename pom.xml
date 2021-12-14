@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.green</groupId>
-    <artifactId>gb-sharding-os</artifactId>
+    <artifactId>sharding-os</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gb-sharding-os</name>
-    <description>gb-sharding-os</description>
+    <name>sharding-os</name>
+    <description>gsharding-os</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
