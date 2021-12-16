@@ -13,9 +13,27 @@ CREATE TABLE `a_account_associate` (
   `union_id` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
   `open_id` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'openId',
   `mobile` varchar(11) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '手机号',
-  `status` tinyint(2) DEFAULT NULL COMMENT '1关注中,2已取关,3授权',
+  `status` tinyint(2) DEFAULT NULL COMMENT '状态码',
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  `avatar_hash` varchar(49) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'hash值'
+  `avatar_hash` varchar(49) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'hash值',
   PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `a_account` (
+  `id` bigint(20) NOT NULL,
+  `country` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '国家',
+  `province` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '省',
+  `city` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '市',
+   `district` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '区',
+  `nickname` varchar(50) COLLATE utf8mb4_bin NOT NULL COMMENT '昵称',
+  `avatar` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '头像',
+  `avatar_hash` varchar(49) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'hash值',
+  `gender` tinyint(2) NOT NULL COMMENT '性别',
+  `mobile` varchar(11) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '手机号码',
+  `status` tinyint(2) NOT NULL COMMENT '状态码',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL,
+  `biz_user_id` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '通联支付id',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
