@@ -8,7 +8,7 @@ CREATE TABLE `a_account_associate` (
   `district` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '区',
   `avatar` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '头像',
   `account_id` bigint(20) DEFAULT NULL,
-  `type` tinyint(2) NOT NULL COMMENT '1企业微信，2微信公众号',
+  `type` tinyint(2) NOT NULL COMMENT '1',
   `wx_id` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '微信id',
   `union_id` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
   `open_id` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'openId',
@@ -34,6 +34,6 @@ CREATE TABLE `a_account` (
   `status` tinyint(2) NOT NULL COMMENT '状态码',
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  `biz_user_id` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '通联支付id',
+  `biz_user_id` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'biz_user_id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
