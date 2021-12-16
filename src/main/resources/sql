@@ -1,0 +1,21 @@
+CREATE TABLE `a_account_associate` (
+  `id` bigint(20) NOT NULL,
+  `nickname` varchar(50) COLLATE utf8mb4_bin NOT NULL COMMENT '名称',
+  `gender` tinyint(2) NOT NULL COMMENT '性别',
+  `country` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '国家',
+  `city` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '地区',
+  `province` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '省份',
+  `district` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '区',
+  `avatar` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '头像',
+  `account_id` bigint(20) DEFAULT NULL,
+  `type` tinyint(2) NOT NULL COMMENT '1企业微信，2微信公众号',
+  `wx_id` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '微信id',
+  `union_id` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `open_id` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'openId',
+  `mobile` varchar(11) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '手机号',
+  `status` tinyint(2) DEFAULT NULL COMMENT '1关注中,2已取关,3授权',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL,
+  `avatar_hash` varchar(49) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'hash值'
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
